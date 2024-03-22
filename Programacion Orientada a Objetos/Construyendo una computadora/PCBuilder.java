@@ -27,7 +27,9 @@ public class PCBuilder{
         discos.add(disco); 
         mommy.setStorage(discos); 
 
-        OS sistema = new OS(); 
-        mommy.getStorage().get(0).setSystem(sistema); 
+        OS sistema = new OS("Windows", "XP", "1.3"); 
+        mommy.getStorage().get(0).setSystem(sistema); //obejto mommy. accede al objeto Storage...quien abre la opcion get(0) en dodne se
+        //dice el indice que sera, "caminito de acceso" nunca se toca la "casilla" directamente
+        System.out.println("Booting..."); 
     }
 }

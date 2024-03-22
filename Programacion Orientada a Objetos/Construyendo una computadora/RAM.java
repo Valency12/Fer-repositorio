@@ -5,6 +5,11 @@ public class RAM{
     private int frequencia; 
     private int rgb; 
 
+    RAM({
+        
+    })
+
+
     public String getModel(){
     return model; 
     }
