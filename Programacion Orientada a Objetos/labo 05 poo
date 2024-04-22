@@ -1,0 +1,211 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+// Interfaz para definir los métodos de reserva, cancelación y verificación de estado
+interface Reservable {
+    void reservar();
+    void cancelarReserva();
+    void verificarEstado();
+}
+
+// Clase Sala que implementa la interfaz Reservable
+class Sala implements Reservable {
+    private int id;
+    private int capacidadMaxima;
+    private String nivel;
+    private String tipo;
+    private boolean reservada;
+
+    public Sala(int id, int capacidadMaxima, String nivel, String tipo) {
+        this.id = id;
+        this.capacidadMaxima = capacidadMaxima;
+        this.nivel = nivel;
+        this.tipo = tipo;
+        this.reservada = false;
+    }
+
+    @Override
+    public void reservar() {
+        if (!reservada) {
+            reservada = true;
+            System.out.println("La sala ha sido reservada con éxito.");
+        } else {
+            System.out.println("La sala ya está reservada.");
+        }
+    }
+
+    @Override
+    public void cancelarReserva() {
+        if (reservada) {
+            reservada = false;
+            System.out.println("La reserva de la sala ha sido cancelada.");
+        } else {
+            System.out.println("La sala no está reservada.");
+        }
+    }
+
+    @Override
+    public void verificarEstado() {
+        if (reservada) {
+            System.out.println("La sala está reservada.");
+        } else {
+            System.out.println("La sala está disponible.");
+        }
+    }
+
+    public void mostrarDetalles() {
+        System.out.println("ID: " + id);
+        System.out.println("Capacidad máxima: " + capacidadMaxima);
+        System.out.println("Nivel: " + nivel);
+        System.out.println("Tipo: " + tipo);
+        verificarEstado();
+    }
+}
+
+// Clase Libro
+class Libro {
+    private String ISBN;
+    private String titulo;
+    private String autor;
+    private String ubicacion;
+    private boolean prestado;
+
+    public Libro(String ISBN, String titulo, String autor, String ubicacion) {
+        this.ISBN = ISBN;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.ubicacion = ubicacion;
+        this.prestado = false;
+    }
+
+    public void prestar() {
+        if (!prestado) {
+            prestado = true;
+            System.out.println("El libro ha sido prestado con éxito.");
+        } else {
+            System.out.println("El libro ya está prestado.");
+        }
+    }
+
+    public void devolver() {
+        if (prestado) {
+            prestado = false;
+            System.out.println("El libro ha sido devuelto con éxito.");
+        } else {
+            System.out.println("El libro no está prestado.");
+        }
+    }
+
+    public void verificarEstado() {
+        if (prestado) {
+            System.out.println("El libro está prestado.");
+        } else {
+            System.out.println("El libro está disponible.");
+        }
+    }
+
+    public void mostrarDetalles() {
+        System.out.println("ISBN: " + ISBN);
+        System.out.println("Título: " + titulo);
+        System.out.println("Autor: " + autor);
+        System.out.println("Ubicación: " + ubicacion);
+        verificarEstado();
+    }
+}
+
+public class Biblioteca {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Crear algunas salas
+        Sala sala1 = new Sala(1, 10, "1er piso", "Sala de reuniones");
+        Sala sala2 = new Sala(2, 5, "2do piso", "Sala de estudio individual");
+        Sala sala3 = new Sala(3, 15, "3er piso", "Sala de estudio grupal");
+
+        // Crear algunos libros
+        Libro libro1 = new Libro("978-3-16-148410-0", "Harry Potter", "J.K. Rowling", "2do piso");
+        Libro libro2 = new Libro("978-3-16-148411-7", "El señor de los anillos", "J.R.R. Tolkien", "3er piso");
+
+        // Listas para almacenar salas y libros
+        List<Sala> salas = new ArrayList<>();
+        List<Libro> libros = new ArrayList<>();
+
+        salas.add(sala1);
+        salas.add(sala2);
+        salas.add(sala3);
+
+        libros.add(libro1);
+        libros.add(libro2);
+
+        // Menú principal
+        while (true) {
+            System.out.println("\nMenú principal:");
+            System.out.println("1. Gestión de salas");
+            System.out.println("2. Gestión de libros");
+            System.out.println("3. Salir");
+            System.out.print("Ingrese su opción: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine(); // Consumir el salto de línea
+
+            switch (opcion) {
+                case 1:
+                    gestionarSalas(scanner, salas);
+                    break;
+                case 2:
+                    gestionarLibros(scanner, libros);
+                    break;
+                case 3:
+                    System.out.println("¡Hasta luego!");
+                    System.exit(0);
+                default:
+                    System.out.println("Opción no válida. Intente nuevamente.");
+            }
+        }
+    }
+
+    // Método para gestionar las salas
+    public static void gestionarSalas(Scanner scanner, List<Sala> salas) {
+        System.out.println("\nGestión de salas:");
+        System.out.println("1. Mostrar salas disponibles");
+        System.out.println("2. Mostrar salas reservadas");
+        System.out.println("3. Mostrar detalles de una sala");
+        System.out.println("4. Reservar sala");
+        System.out.println("5. Cancelar reserva de una sala");
+        System.out.print("Ingrese su opción: ");
+        int opcion = scanner.nextInt();
+        scanner.nextLine(); // Consumir el salto de línea
+
+        switch (opcion) {
+            case 1:
+                mostrarSalasDisponibles(salas);
+                break;
+            case 2:
+                mostrarSalasReservadas(salas);
+                break;
+            case 3:
+                mostrarDetallesSala(scanner, salas);
+                break;
+            case 4:
+                reservarSala(scanner, salas);
+                break;
+            case 5:
+                cancelarReservaSala(scanner, salas);
+                break;
+            default:
+                System.out.println("Opción no válida. Intente nuevamente.");
+        }
+    }
+
+    // Método para mostrar las salas disponibles
+    public static void mostrarSalasDisponibles(List<Sala> salas) {
+        System.out.println("\nSalas disponibles:");
+        for (Sala sala : salas) {
+            if (!sala.reservada) {
+                sala.mostrarDetalles();
+            }
+        }
+    }
+
+    // Método para mostrar las salas reservadas
+    public static void mostrar
