@@ -1,6 +1,79 @@
-body{
-    background-image: url(/fondo.jpeg);
-    background-color: aquamarine;
-    font-family: sans-serif;
-    padding: 20px; 
+html{
+    min-height: 80%;
 }
+body{
+    background-color: rgb(15, 151, 106);
+}
+.conteiner{
+   background-color: rgb(131, 231, 231);
+   border-radius: 20px;
+   height: 400px;
+   margin: 50px; 
+   /* esto lo podemos mejorar */
+   margin-bottom: 60px; 
+   margin-left: 200px;
+   margin-right: 200px;
+   padding: 200px;
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    font-family:'Times New Roman';
+    color: antiquewhite;
+    height: 40px;
+}
+h2{
+    text-align: center;
+    font-size: 20px;
+    font-family:'Times New Roman';
+    color: antiquewhite; 
+    height: 0px;
+}
+h3{
+    text-align: center;
+    font-size: 20px;
+    font-family:'Times New Roman';
+    color: rgb(14, 145, 132); 
+    height: 0px;
+}
+
+
+/* html{
+    min-height: 100%;
+}
+body{
+    background-image: url("/fondo.jpeg");
+     /*linear-gradient(
+        115deg,
+        rgba(74, 74, 80, 0.8),
+        rgba(73, 73, 150, 0.7)
+    )url("fondo.jpeg"); */
+    /* font-family: sans-serif;
+    padding: 20px; 
+} */
+/* .conteiner{
+    background-color: aquamarine;
+  padding: 500px;
+  margin: 500px; 
+} */ 
+/* .registration{
+    width: 80%;
+    background-color: burlywood;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    max-width: 500px;
+} */
+
+/* h1{
+    text-align: center;
+    color: antiquewhite;
+    font-size:40px;
+    margin-top: 0; 
+    margin-bottom: 100px;
+}
+.Registration{
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: auto;
+} */
