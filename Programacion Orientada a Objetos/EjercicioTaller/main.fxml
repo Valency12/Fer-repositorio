@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <Text text="Taller de Reparación de Autos"/>
+    <Button text="Registrar Empleado" onAction="#handleRegistrarEmpleado"/>
+    <Button text="Registrar Tarea" onAction="#handleRegistrarTarea"/>
+    <Button text="Asignar Tarea a Empleado" onAction="#handleAsignarTarea"/>
+    <Button text="Mostrar Tareas por Empleado" onAction="#handleMostrarTareasEmpleado"/>
+    <Button text="Mostrar Tareas por Categoría" onAction="#handleMostrarTareasCategoria"/>
+</VBox>
